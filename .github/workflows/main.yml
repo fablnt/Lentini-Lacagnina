@@ -81,7 +81,7 @@ jobs:
           sshpass -p "${{secrets.CINECA_PASSWORD}}" scp -o StrictHostKeyChecking=no a08trb55@login.g100.cineca.it:/g100/home/usertrain/a08trb55/slurmerr.txt
           
       - name: Commit and Push Output Files
-          run: |
+        run: |
           git config --global user.name "github-actions"
           git config --global user.email "github-actions@github.com"
           git add slurmout.txt slurmerr.txt
