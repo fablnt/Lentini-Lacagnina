@@ -73,11 +73,13 @@ jobs:
         run: |
           sleep 60  # Wait for the job to complete. Adjust the time as needed.
 
-      - name: Retrieve Output Files
-        run: |
-          sshpass -p "${{ secrets.CINECA_PASSWORD }}" scp -o StrictHostKeyChecking=no a08trb55@login.g100.cineca.it:/g100/home/usertrain/a08trb55/slurmout.txt .
-          sshpass -p "${{ secrets.CINECA_PASSWORD }}" scp -o StrictHostKeyChecking=no a08trb55@login.g100.cineca.it:/g100/home/usertrain/a08trb55/slurmerr.txt .
-
+      - name: Transfer files from cluster
+         run: |
+          ssh-keygen -f "/home/runner/.ssh/known_hosts" -R "login.g100.cineca.it"
+          sshpass -p "${{secrets.CINECA_PASSWORD}}" scp -o StrictHostKeyChecking=no a08trb55@login.g100.cineca.it:/g100/home/usertrain/a08trb55/slurmout.txt
+          ssh-keygen -f "/home/runner/.ssh/known_hosts" -R "login.g100.cineca.it"
+          sshpass -p "${{secrets.CINECA_PASSWORD}}" scp -o StrictHostKeyChecking=no a08trb55@login.g100.cineca.it:/g100/home/usertrain/a08trb55/slurmerr.txt
+          
       - name: Commit and Push Output Files
         run: |
           git config --global user.name "github-actions"
