@@ -33,7 +33,7 @@ jobs:
         run: cmake --build build
 
       - name: Run Test
-        run: cd /home/runner/work/Lacagnina-Lentini-part2/Lacagnina-Lentini-part2/build && ./test_multiplication
+        run: cd /home/runner/work/Lentini-Lacagnina/Lentini-Lacagnina/build && ./test_multiplication
 
       - name: Install Dependencies
         run: |
