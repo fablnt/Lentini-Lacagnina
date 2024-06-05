@@ -84,10 +84,10 @@ jobs:
           mv ~/slurmout.txt /home/runner/work/Lentini-Lacagnina/Lentini-Lacagnina/
           mv ~/slurmerr.txt /home/runner/work/Lentini-Lacagnina/Lentini-Lacagnina/
 
-      - name: Commit and Push Output Files
-        run: |
-          git config --global user.name "github-actions"
-          git config --global user.email "github-actions@github.com"
-          git add /home/runner/work/Lentini-Lacagnina/Lentini-Lacagnina/slurmout.txt /home/runner/work/Lentini-Lacagnina/Lentini-Lacagnina/slurmerr.txt
-          git commit -m "Add output and error files from cluster"
-          git push https://github.com/fablnt/Lentini-Lacagnina ${{ secrets.PAT }}
+      - name: Upload files
+        uses: actions/upload-artifact@v3
+        with:
+            name: output
+            path: |
+              /home/runner/work/Lentini-Lacagnina/Lentini-Lacagnina/slurmout.txt
+              /home/runner/work/Lentini-Lacagnina/Lentini-Lacagnina/slurmerr.txt
