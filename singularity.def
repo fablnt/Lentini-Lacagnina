@@ -1,0 +1,24 @@
+Bootstrap: docker
+From: ubuntu:22.04
+
+
+%post 
+
+    apt-get update && apt-get install -y wget gcc g++ make file cmake openssh-client
+    apt-get install -y libstdc++6
+
+    #directory for executable in the container
+    mkdir -p /app
+
+    apt-get install -y openmpi-bin openmpi-common libopenmpi-dev 
+
+
+
+%files
+    /home/runner/work/Lacagnina-Lentini-part2/Lacagnina-Lentini-part2/build/  /app/
+    /home/runner/work/Lacagnina-Lentini-part2/Lacagnina-Lentini-part2/matrixA.txt /app/build
+    /home/runner/work/Lacagnina-Lentini-part2/Lacagnina-Lentini-part2/matrixB.txt /app/build
+
+%runscript
+    cd /app/build && mpirun -np 2 main
+   
