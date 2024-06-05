@@ -74,14 +74,14 @@ jobs:
           sleep 60  # Wait for the job to complete. Adjust the time as needed.
 
       - name: Transfer files from cluster
-         run: |
-          ssh-keygen -f "/home/runner/.ssh/known_hosts" -R "login.g100.cineca.it"
+        run: |
+          ssh-keygen -f "/home/runner/.ssh/known_hosts" -R "login.g100.cineca.it"
           sshpass -p "${{secrets.CINECA_PASSWORD}}" scp -o StrictHostKeyChecking=no a08trb55@login.g100.cineca.it:/g100/home/usertrain/a08trb55/slurmout.txt
           ssh-keygen -f "/home/runner/.ssh/known_hosts" -R "login.g100.cineca.it"
           sshpass -p "${{secrets.CINECA_PASSWORD}}" scp -o StrictHostKeyChecking=no a08trb55@login.g100.cineca.it:/g100/home/usertrain/a08trb55/slurmerr.txt
           
       - name: Commit and Push Output Files
-        run: |
+          run: |
           git config --global user.name "github-actions"
           git config --global user.email "github-actions@github.com"
           git add slurmout.txt slurmerr.txt
