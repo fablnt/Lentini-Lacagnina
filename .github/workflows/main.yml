@@ -86,6 +86,7 @@ jobs:
         run: |
           git config --global user.name "github-actions"
           git config --global user.email "github-actions@github.com"
+          cd
           git add slurmout.txt slurmerr.txt
           git commit -m "Add output and error files from cluster"
           git push
