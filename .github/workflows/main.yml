@@ -81,12 +81,5 @@ jobs:
           sshpass -p "${{secrets.CINECA_PASSWORD}}" scp -o StrictHostKeyChecking=no a08trb55@login.g100.cineca.it:/g100/home/usertrain/a08trb55/slurmerr.txt ~
           cd
           cat slurmout.txt
-          
-      - name: Commit and Push Output Files
-        run: |
-          git config --global user.name "github-actions"
-          git config --global user.email "github-actions@github.com"
-          cd
-          git add slurmout.txt slurmerr.txt
-          git commit -m "Add output and error files from cluster"
-          git push
+          mv ~/slurmout.txt /home/runner/work/Lentini-Lacagnina/Lentini-Lacagnina/
+          mv ~/slurmerr.txt /home/runner/work/Lentini-Lacagnina/Lentini-Lacagnina/
