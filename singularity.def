@@ -15,9 +15,9 @@ From: ubuntu:22.04
 
 
 %files
-    /home/runner/work/Lacagnina-Lentini-part2/Lentini-Lacagnina/build/  /app/
-    /home/runner/work/Lacagnina-Lentini-part2/Lentini-Lacagnina/matrixA.txt /app/build
-    /home/runner/work/Lacagnina-Lentini-part2/Lentini-Lacagnina/matrixB.txt /app/build
+    /home/runner/work/Lentini-Lacagnina/Lentini-Lacagnina/build/  /app/
+    /home/runner/work/Lentini-Lacagnina/Lentini-Lacagnina/matrixA.txt /app/build
+    /home/runner/work/Lentini-Lacagnina/Lentini-Lacagnina/matrixB.txt /app/build
 
 %runscript
     cd /app/build && mpirun -np 2 main
