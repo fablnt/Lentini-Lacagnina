@@ -71,7 +71,7 @@ jobs:
 
       - name: Wait for Job Completion
         run: |
-          sleep 1200  # Wait for the job to complete. Adjust the time as needed.
+          sleep 60  # Wait for the job to complete. Adjust the time as needed.
 
       - name: Retrieve Output Files
         run: |
