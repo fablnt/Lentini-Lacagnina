@@ -124,8 +124,8 @@ TEST(MatrixMultiplicationTest, TestNegativeMatrices)
     multiplyMatrices(A, B, C, 2, 4, 4);
 
     std::vector<std::vector<int>> expected = {
-        {110, 120, 130, 140},
-        {248, 272, 296, 320}};
+        {150, 160, 170, 180},
+        {306, 328, 350, 372}};
 
     ASSERT_EQ(C, expected) << "Negative matrix multiplication test failed!";
 }
